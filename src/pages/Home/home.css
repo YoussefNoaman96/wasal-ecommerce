@@ -1,0 +1,152 @@
+.hero {
+    position: relative;
+    margin-bottom: 30px;
+    padding-top: 20px;
+}
+
+.hero .mySwiper {
+    width: 100%;
+    aspect-ratio: 16 / 6;
+}
+
+.hero .swiper-slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Hero Image */
+
+.hero .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+
+/* Content */
+.hero .swiper-slide .content {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    width: 45%;
+}
+
+.hero .swiper-slide .content h4 {
+    font-size: clamp(11px, 1vw, 16px);
+    font-style: italic;
+    font-weight: normal;
+    margin: 0 0 8px;
+}
+
+.hero .swiper-slide .content h3 {
+    font-size: clamp(28px, 3.2vw, 48px);
+    margin: 0;
+    color: var(--main_color);
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.hero .swiper-slide .content p {
+    font-size: clamp(13px, 1.1vw, 17px);
+    margin: 20px 0 25px;
+}
+
+@media (max-width: 992px) {
+
+    .hero {
+        padding-top: 15px;
+    }
+
+    .hero .mySwiper {
+        aspect-ratio: 16 / 7;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .hero {
+        padding-top: 5px;
+        margin-bottom: 20px;
+    }
+
+    .hero .mySwiper {
+        aspect-ratio: 16 / 8;
+    }
+
+    .hero .swiper-slide .content {
+        left: 6%;
+        width: 48%;
+    }
+
+    .hero .swiper-slide .content h4 {
+        font-size: 9px;
+        margin-bottom: 4px;
+    }
+
+    .hero .swiper-slide .content h3 {
+        font-size: clamp(18px, 5vw, 24px);
+        line-height: 1.08;
+    }
+
+    .hero .swiper-slide .content p {
+        font-size: clamp(9px, 2.5vw, 12px);
+        line-height: 1.25;
+
+        margin: 10px 0 12px;
+    }
+
+    .hero .swiper-slide .content .btn {
+        font-size: 10px;
+        padding: 7px 12px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .hero {
+        padding-top: 0;
+        margin-bottom: 15px;
+    }
+
+    .hero .mySwiper {
+        aspect-ratio: 16 / 8;
+    }
+
+    .hero .swiper-slide .content {
+        left: 6%;
+        width: 50%;
+    }
+
+    .hero .swiper-slide .content h4 {
+        font-size: 7px;
+        margin-bottom: 3px;
+    }
+
+    .hero .swiper-slide .content h3 {
+        font-size: clamp(16px, 4.5vw, 20px);
+        line-height: 1.05;
+    }
+
+    .hero .swiper-slide .content p {
+        font-size: clamp(8px, 2.2vw, 10px);
+        line-height: 1.2;
+
+        margin: 7px 0 9px;
+    }
+
+    .hero .swiper-slide .content .btn {
+        font-size: 9px;
+        padding: 6px 10px;
+    }
+
+}   

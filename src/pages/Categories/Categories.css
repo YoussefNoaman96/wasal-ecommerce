@@ -1,0 +1,599 @@
+/* Categories Page */
+.categories_page {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--bg_color);
+    color: var(--color_heading);
+}
+
+/* Hero */
+.categories_hero {
+    width: 100%;
+    /* min-height: 520px; */
+    padding: 15px 8% 80px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at 80% 30%, rgba(1, 62, 55, 0.08), transparent 35%);
+}
+
+.categories_hero::before {
+    content: "CATEGORIES";
+    position: absolute;
+    right: -30px;
+    bottom: -35px;
+    font-size: clamp(100px, 15vw, 240px);
+    font-weight: 900;
+    line-height: 1;
+    color: rgba(1, 62, 55, 0.035);
+    pointer-events: none;
+}
+
+.categories_hero_content {
+    max-width: 700px;
+    position: relative;
+    z-index: 2;
+}
+
+.categories_eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--p_color);
+    margin-bottom: 25px;
+}
+
+.categories_eyebrow::before {
+    content: "";
+    width: 35px;
+    height: 1px;
+    background: var(--main_color);
+}
+
+.categories_hero h1 {
+    margin: 0;
+    font-size: clamp(55px, 7vw, 105px);
+    line-height: 0.95;
+    font-weight: 700;
+    letter-spacing: -4px;
+    color: var(--color_heading);
+}
+
+.categories_hero h1 span {
+    font-weight: 400;
+    font-style: italic;
+}
+
+.categories_hero p {
+    max-width: 470px;
+    margin-top: 35px;
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--p_color);
+}
+
+.categories_hero_number {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--p_color);
+    position: relative;
+    z-index: 2;
+}
+
+.categories_hero_number div {
+    width: 55px;
+    height: 1px;
+    background: var(--border_color);
+}
+
+/* Categories Container */
+.categories_container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding:20px 0 120px;
+}
+
+.categories_heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.categories_heading>div>span {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--p_color);
+}
+
+.categories_heading h2 {
+    margin: 10px 0 0;
+    font-size: clamp(35px, 4vw, 55px);
+    line-height: 1;
+    letter-spacing: -2px;
+    color: var(--color_heading);
+}
+
+.categories_heading p {
+    max-width: 350px;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--p_color);
+}
+
+.categories_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+/* Category Card */
+.category_card {
+    position: relative;
+    height: 230px;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+    border-radius: 18px;
+    background: var(--main_color);
+    isolation: isolate;
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.category_card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.04);
+    transition: transform 0.8s ease, filter 0.5s ease;
+}
+
+.category_card_overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.58));
+    transition: background 0.5s ease;
+}
+
+.category_card_content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #111;
+}
+
+.category_card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.category_number {
+    display: none;
+}
+
+.category_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.category_info h3 {
+    margin: 0;
+    max-width: 90%;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(25px, 2.5vw, 36px);
+    line-height: 1.05;
+    font-weight: 500;
+    text-transform: capitalize;
+    letter-spacing: -1px;
+}
+
+.explore_category {
+    margin-top: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    letter-spacing: 0;
+    text-transform: none;
+    opacity: 1;
+    color: #111;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.explore_category>span {
+    display: none;
+}
+
+.category_card:hover img {
+    transform: scale(1.08);
+    filter: saturate(1.08);
+}
+
+.category_card:hover .category_card_overlay {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.35));
+}
+
+.category_card:hover .category_card_content {
+    color: #000;
+}
+
+.category_card:hover .explore_category {
+    transform: translateY(3px);
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1000px) {
+    .categories_hero {
+        /* min-height: 480px; */
+        padding: 10px 6% 70px;
+    }
+
+    .categories_hero h1 {
+        font-size: clamp(52px, 8vw, 80px);
+        letter-spacing: -3px;
+    }
+
+    .categories_hero p {
+        max-width: 420px;
+        font-size: 15px;
+    }
+
+    .categories_hero_number {
+        margin-bottom: 5px;
+    }
+
+    .categories_container {
+        width: 92%;
+        padding: 20px 0 100px;
+    }
+
+    .categories_heading {
+        margin-bottom: 40px;
+    }
+
+    .categories_heading h2 {
+        font-size: clamp(34px, 5vw, 48px);
+    }
+
+    .categories_grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .category_card {
+        height: 250px;
+        border-radius: 16px;
+    }
+
+    .category_card_content {
+        padding: 22px;
+    }
+
+    .category_info h3 {
+        font-size: clamp(25px, 3vw, 34px);
+    }
+
+    .explore_category {
+        font-size: 14px;
+    }
+}
+
+/* ---------- Small Tablet / Large Mobile ---------- */
+@media (max-width: 700px) {
+    .categories_hero {
+        min-height: auto;
+        padding: 10px 30px 60px;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        gap: 50px;
+    }
+
+    .categories_hero::before {
+        right: -20px;
+        bottom: -10px;
+        font-size: 100px;
+    }
+
+    .categories_hero_content {
+        max-width: 100%;
+    }
+
+    .categories_eyebrow {
+        font-size: 10px;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+    }
+
+    .categories_eyebrow::before {
+        width: 25px;
+    }
+
+    .categories_hero h1 {
+        font-size: clamp(48px, 11vw, 70px);
+        line-height: 0.95;
+        letter-spacing: -3px;
+    }
+
+    .categories_hero p {
+        max-width: 450px;
+        margin-top: 25px;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .categories_hero_number {
+        align-self: flex-end;
+        margin: 0;
+        font-size: 10px;
+    }
+
+    .categories_hero_number div {
+        width: 40px;
+    }
+
+    /* Heading */
+
+    .categories_container {
+        width: calc(100% - 50px);
+        padding: 20px 0 90px;
+    }
+
+    .categories_heading {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        margin-bottom: 35px;
+    }
+
+    .categories_heading > div > span {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .categories_heading h2 {
+        margin-top: 8px;
+        font-size: 40px;
+        letter-spacing: -1.5px;
+    }
+
+    .categories_heading p {
+        max-width: 450px;
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+
+    /* Cards */
+
+    .categories_grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .category_card {
+        height: 210px;
+        border-radius: 15px;
+    }
+
+    .category_card_content {
+        padding: 15px;
+    }
+
+    .category_info h3 {
+        max-width: 100%;
+        font-size: 25px;
+        letter-spacing: -0.8px;
+    }
+
+    .explore_category {
+        margin-top: 8px;
+        font-size: 12px;
+    }
+}
+
+
+/* ---------- Mobile ---------- */
+@media (max-width: 550px) {
+
+    .categories_hero {
+        padding: 10px 20px 50px;
+        gap: 40px;
+    }
+
+    .categories_hero::before {
+        right: -25px;
+        bottom: -5px;
+        font-size: 80px;
+    }
+
+    .categories_eyebrow {
+        font-size: 9px;
+        letter-spacing: 1.8px;
+        gap: 8px;
+    }
+
+    .categories_eyebrow::before {
+        width: 20px;
+    }
+
+    .categories_hero h1 {
+        font-size: clamp(42px, 12vw, 58px);
+        letter-spacing: -2.5px;
+    }
+
+    .categories_hero p {
+        margin-top: 22px;
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .categories_hero_number {
+        font-size: 9px;
+        letter-spacing: 1.5px;
+    }
+
+    .categories_hero_number div {
+        width: 30px;
+    }
+
+
+    /* Container */
+
+    .categories_container {
+        width: calc(100% - 30px);
+        padding: 20px 0 70px;
+    }
+
+    .categories_heading {
+        margin-bottom: 30px;
+        gap: 12px;
+    }
+
+    .categories_heading > div > span {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .categories_heading h2 {
+        margin-top: 7px;
+        font-size: 34px;
+        letter-spacing: -1px;
+    }
+
+    .categories_heading p {
+        font-size: 12px;
+    }
+
+
+    /* Grid */
+
+    .categories_grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .category_card {
+        height: 180px;
+        border-radius: 13px;
+    }
+
+    .category_card_content {
+        padding: 10px;
+    }
+
+    .category_info h3 {
+        font-size: 21px;
+        letter-spacing: -0.5px;
+    }
+
+    .explore_category {
+        margin-top: 7px;
+        font-size: 11px;
+    }
+}
+
+
+/* ---------- Small Phones ---------- */
+@media (max-width: 380px) {
+
+    .categories_hero {
+        padding: 10px 15px 45px;
+    }
+
+    .categories_hero h1 {
+        font-size: 40px;
+        letter-spacing: -2px;
+    }
+
+    .categories_hero p {
+        font-size: 12px;
+    }
+
+    .categories_container {
+        width: calc(100% - 24px);
+        padding: 20px 0 60px;
+    }
+
+    .categories_heading h2 {
+        font-size: 31px;
+    }
+
+    .categories_grid {
+        gap: 10px;
+    }
+
+    .category_card {
+        height: 155px;
+        border-radius: 11px;
+    }
+
+    .category_card_content {
+        padding: 8px;
+    }
+
+    .category_info h3 {
+        font-size: 18px;
+        line-height: 1.1;
+    }
+
+    .explore_category {
+        margin-top: 5px;
+        font-size: 10px;
+    }
+}
+
+
+/* ---------- Extra Small Phones ---------- */
+@media (max-width: 320px) {
+
+    .categories_hero h1 {
+        font-size: 36px;
+    }
+
+    .categories_hero p {
+        font-size: 11px;
+    }
+
+    .categories_grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .category_card {
+        height: 180px;
+    }
+
+    .category_info h3 {
+        font-size: 23px;
+    }
+
+    .explore_category {
+        font-size: 12px;
+    }
+}

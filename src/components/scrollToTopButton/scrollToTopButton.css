@@ -1,0 +1,85 @@
+.scroll-to-top-button-wrapper {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  z-index: 9999;
+}
+
+.scroll-to-top-button {
+  position: relative;
+
+  width: 48px;
+  height: 48px;
+
+  border: 1px solid var(--border_color);
+  border-radius: 50%;
+
+  background-color: var(--main_color);
+  color: var(--white_color);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 25px rgba(1, 62, 55, 0.18);
+
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.scroll-to-top-button:hover {
+  background-color: var(--color_heading);
+
+  box-shadow: 0 10px 30px rgba(1, 62, 55, 0.28);
+}
+
+.scroll-to-top-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-to-top-sparkle {
+  position: absolute;
+
+  top: -3px;
+  right: -3px;
+
+  color: var(--accent_color);
+
+  opacity: 0;
+
+  transition: opacity 0.3s ease;
+
+  animation: sparklePulse 1.5s infinite;
+}
+
+.scroll-to-top-button:hover .scroll-to-top-sparkle {
+  opacity: 1;
+}
+
+@keyframes sparklePulse {
+  0%,
+  100% {
+    transform: scale(0.8);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@media (max-width: 768px) {
+  .scroll-to-top-button-wrapper {
+    right: 16px;
+    bottom: 18px;
+  }
+
+  .scroll-to-top-button {
+    width: 44px;
+    height: 44px;
+  }
+}
