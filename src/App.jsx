@@ -62,11 +62,7 @@ function App() {
               <Route path="/categories" element={<Categories />} />
               <Route path="/login" element={<AuthLayout />} />
               <Route path="/register" element={<AuthLayout />} />
-
-              <Route path="/cart" element={
-                <ProtectedRoute>
-                  <Cart />
-                </ProtectedRoute>} />
+              <Route path="/cart" element={<Cart />} />
 
               <Route path="/checkout" element={
                 <ProtectedRoute>

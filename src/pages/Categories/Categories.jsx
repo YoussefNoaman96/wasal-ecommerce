@@ -4,6 +4,7 @@ import { useCategory } from '../../components/context/CategoryContext'
 import './Categories.css'
 import CategoryLoading from '../CategoryPage/CategoryLoading'
 import '../productDetails/productDetails.css'
+import PageTransition from '../../components/PageTransition'
 
 const categoryImages = {
     beauty: "/categories/web/beauty.webp",
@@ -36,51 +37,48 @@ function Categories() {
     const { categories, loading } = useCategory();
 
     return (
-        <section className="categories_page">
-            <div className="categories_hero">
-                <div className="categories_hero_content">
-                    <span className="categories_eyebrow">EXPLORE OUR COLLECTION</span>
-                    <h1>Find What <br /><span>Defines You.</span> </h1>
-                    <p>Explore our carefully selected collections and discover something made for you.</p>
-                </div>
-
-                <div className="categories_hero_number">
-                    <span>01</span>
-                    <div></div>
-                    <span>Categories</span>
-                </div>
-            </div>
-
-            <div className="categories_container">
-                <div className="categories_heading">
-                    <div>
-                        <span>OUR COLLECTION</span>
-                        <h2>Shop by Category</h2>
+        <PageTransition>
+            <section className="categories_page">
+                <div className="categories_hero">
+                    <div className="categories_hero_content">
+                        <span className="categories_eyebrow">EXPLORE OUR COLLECTION</span>
+                        <h1>Find What <br /><span>Defines You.</span> </h1>
+                        <p>Explore our carefully selected collections and discover something made for you.</p>
                     </div>
-                    <p>Discover our carefully curated categories</p>
+                    <div className="categories_hero_number">
+                        <span>01</span>
+                        <div></div>
+                        <span>Categories</span>
+                    </div>
                 </div>
-
-                <div className="categories_grid">
-                    {loading ? Array.from({ length: 8 }).map((_, index) => (
-                            <CategoryLoading key={index} /> ))
-                        : categories.map((category) => (
-                            <Link to={`/category/${category.slug}`} key={category.slug} className="category_card">
-                                <img src={categoryImages[category.slug]} alt={category.name} loading="lazy" decoding="async"/>
-
-                                <div className="category_card_overlay"></div>
-
-                                <div className="category_card_content">
-                                    <div className="category_info">
-                                        <h3>{category.name}</h3>
-                                        <span className="explore_category">{category.count} products</span>
+                <div className="categories_container">
+                    <div className="categories_heading">
+                        <div>
+                            <span>OUR COLLECTION</span>
+                            <h2>Shop by Category</h2>
+                        </div>
+                        <p>Discover our carefully curated categories</p>
+                    </div>
+                    <div className="categories_grid">
+                        {loading ? Array.from({ length: 8 }).map((_, index) => (
+                                <CategoryLoading key={index} /> ))
+                            : categories.map((category) => (
+                                <Link to={`/category/${category.slug}`} key={category.slug} className="category_card">
+                                    <img src={categoryImages[category.slug]} alt={category.name} loading="lazy" decoding="async"/>
+                                    <div className="category_card_overlay"></div>
+                                    <div className="category_card_content">
+                                        <div className="category_info">
+                                            <h3>{category.name}</h3>
+                                            <span className="explore_category">{category.count} products</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </Link>
-                        ))
-                    }
+                                </Link>
+                            ))
+                        }
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </PageTransition>
     )
 }
 

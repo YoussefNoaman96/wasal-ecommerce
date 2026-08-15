@@ -25,12 +25,14 @@ function CartProvider({ children }) {
     }, [favoritesKey])
 
     const addToFavorites = useCallback((item) => {
-        if (!user) return
+        if (!user) return false
 
         setFavorites((prevItems) => {
             if (prevItems.some((i) => i.id === item.id)) return prevItems
             return [...prevItems, item]
         })
+
+        return true
     }, [user])
 
     useEffect(() => {
@@ -93,21 +95,21 @@ function CartProvider({ children }) {
     }, [user])
 
     const addToCart = useCallback((item) => {
-        if (!user) return
+        if (!user) return false
 
         setCartItems((prevItems) => {
             const itemExists = prevItems.some((i) => i.id === item.id)
 
             if (itemExists) {
                 return prevItems.map((i) =>
-                    i.id === item.id
-                        ? { ...i, quantity: i.quantity + 1 }
-                        : i
+                    i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
                 )
             }
 
             return [...prevItems, { ...item, quantity: 1 }]
         })
+
+        return true
     }, [user])
 
     useEffect(() => {
