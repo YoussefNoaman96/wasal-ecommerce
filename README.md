@@ -1,16 +1,102 @@
-# React + Vite
+# Wasal - E-commerce Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Wasal is a modern e-commerce web application built with React and Vite.
 
-Currently, two official plugins are available:
+The project provides a simple and responsive shopping experience where users can browse products, explore categories, search for products, manage their cart and favorites, and authenticate through the application.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+* Responsive design for desktop, tablet, and mobile
+* Product browsing and product details
+* Product categories
+* Product search
+* Shopping cart
+* Favorites / wishlist
+* User authentication
+* Protected shopping actions
+* Product quantity management
+* Toast notifications
+* Loading states and skeleton components
+* Responsive navigation and mobile sidebar
+* Optimized images using WebP
+* Production-ready build with Vite
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the Oxlint configuration
+* React
+* Vite
+* React Router
+* Axios
+* Swiper
+* React Icons
+* CSS
+* DummyJSON API
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone <repository-url>
+```
+
+Move into the project directory:
+
+```bash
+cd E-commerce
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+## Production Build
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+To preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## API
+
+The application currently uses the DummyJSON API for product and category data.
+
+```text
+https://dummyjson.com
+```
+
+## Deployment
+
+The project is ready to be deployed using Vercel.
+
+Build command:
+
+```bash
+npm run build
+```
+
+Output directory:
+
+```text
+dist
+```
+
+## License
+
+This project was developed as an e-commerce web application for learning and development purposes.
