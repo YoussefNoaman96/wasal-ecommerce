@@ -105,10 +105,9 @@ function Product({ item }) {
   };
 
   return (
-    <div className={`product ${isInCart ? 'in-cart' : ''}`}>
+    <div className='product'>
       <Link to={`/products/${item.id}`}>
 
-        <span className='status_cart'><FaCheck /> in cart </span>
         <div className="img_product">
           <img src={item.images?.[0]} alt={item.title} width="300" height="300"
             loading="lazy" decoding="async" />
@@ -123,10 +122,41 @@ function Product({ item }) {
         </div>
         <p className="price"><span>$ {item.price}</span></p>
       </Link>
+
       <div className="icons">
-        <span className='btn_addtocart' onClick={handleAddToCart}>{isInCart ? <FaCheck /> : <HiOutlineShoppingBag />}</span>
-        <span className={`favorite-btn ${isInFavorites ? "active" : ""}`} onClick={handleAddToFavorites}>{isInFavorites ? <IoHeart /> : <IoHeartOutline />}</span>
-        <span onClick={handleShare}><IoShareSocialOutline /></span>
+        <span
+          className="btn_addtocart"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            handleAddToCart();
+          }}
+        >
+          {isInCart ? <FaCheck /> : <HiOutlineShoppingBag />}
+          <small>{isInCart ? "Added" : "Add to cart"}</small>
+        </span>
+
+        <span
+          className={`favorite-btn ${isInFavorites ? "active" : ""}`}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            handleAddToFavorites();
+          }}
+        >
+          {isInFavorites ? <IoHeart /> : <IoHeartOutline />}
+        </span>
+
+        <span
+          className="share-btn"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            handleShare();
+          }}
+        >
+          <IoShareSocialOutline />
+        </span>
       </div>
     </div>
   )

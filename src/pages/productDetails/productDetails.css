@@ -151,6 +151,11 @@
     border: 1px solid var(--border_color);
 }
 
+.item_details .details_item .icons .favorite-btn.active {
+    color: #e63946;
+    animation: heart 0.3s ease;
+}
+
 .item_details .details_item .icons span:hover {
     background: var(--accent_color);
     border-color: var(--accent_color);
@@ -171,10 +176,7 @@
     position: absolute;
     inset: 0;
     transform: translateX(-100%);
-    background: linear-gradient(90deg,
-            transparent,
-            rgba(255, 255, 255, 0.7),
-            transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
     animation: shimmer 1.2s infinite;
 }
 
@@ -408,7 +410,7 @@
         align-items: flex-start;
     }
 
-    /* ---------- Images ---------- */
+    /*  Images  */
 
     .item_details .imgs_item {
         width: 45%;
