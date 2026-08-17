@@ -21,6 +21,7 @@ const AuthLayout = lazy(() => import("./pages/auth/AuthLayout"))
 const About = lazy(() => import("./pages/About/About"))
 const Categories = lazy(() => import("./pages/Categories/Categories"))
 const Checkout = lazy(() => import("./pages/Checkout/Checkout"))
+const OrderConfirmation = lazy(() => import("./pages/orderConfirmation/OrderConfirmation"))
 
 function App() {
   const location = useLocation()
@@ -74,6 +75,7 @@ function App() {
                   <Favorites />
                 </ProtectedRoute>} />
                 
+               <Route path="order-confirmation" element={<OrderConfirmation />}/> 
               <Route path="/search" element={<SearchResults />} />
               <Route path="/products/:id" element={<ProductDetails />} />
               <Route path="/category/:category" element={<CategoryPage />} />

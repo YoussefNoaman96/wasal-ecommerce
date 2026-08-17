@@ -66,6 +66,9 @@
     border-radius: 15px;
     transition: 0.3s ease;
     box-sizing: border-box;
+
+    position: relative;
+    overflow: visible;
 }
 
 .cart_item:hover {
@@ -192,6 +195,127 @@
     color: #e63946;
     transform: translateY(-2px);
 }
+
+
+/* The card disappears */
+.cart_item.is_removing {
+    border-color: #e63946;
+    animation: cartItemDisappear 700ms ease forwards;
+    pointer-events: none;
+}
+
+@keyframes cartItemDisappear {
+    0% {
+        opacity: 1;
+        transform: scale(1) translateX(0);
+        filter: blur(0);
+    }
+
+    35% {
+        opacity: 1;
+        transform: scale(0.98) translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.85) translateX(15px);
+        filter: blur(5px);
+    }
+}
+
+/* Particle layer */
+.cart_item.is_removing::before,
+.cart_item.is_removing::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
+
+/* Main particles */
+.cart_item.is_removing::before {
+    background-image:
+        radial-gradient(circle, #e63946 1px, transparent 2px),
+        radial-gradient(circle, #e63946 1px, transparent 2px),
+        radial-gradient(circle, #e63946 1.5px, transparent 2.5px),
+        radial-gradient(circle, #ff7a83 1px, transparent 2px);
+
+    background-size:
+        35px 35px,
+        45px 45px,
+        55px 55px,
+        30px 30px;
+
+    background-position:
+        10px 15px,
+        25px 5px,
+        0 25px,
+        35px 20px;
+
+    opacity: 0;
+    animation: particlesAppear 700ms ease forwards;
+}
+
+
+/* Extra particles */
+.cart_item.is_removing::after {
+    background-image:
+        radial-gradient(circle, #e63946 1px, transparent 2px),
+        radial-gradient(circle, #ff9da3 1px, transparent 2px),
+        radial-gradient(circle, #e63946 1px, transparent 2px);
+
+    background-size:
+        40px 40px,
+        50px 50px,
+        32px 32px;
+
+    background-position:
+        5px 10px,
+        30px 25px,
+        15px 35px;
+
+    opacity: 0;
+    animation: particlesScatter 700ms ease forwards;
+}
+
+
+@keyframes particlesAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    25% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(-25px, -15px) scale(1.5);
+    }
+}
+
+@keyframes particlesScatter {
+    0% {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    20% {
+        opacity: 0.9;
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(35px, 25px) scale(1.8);
+    }
+}
+
 
 .cart_footer {
     display: flex;

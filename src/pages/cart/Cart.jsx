@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { CartContext } from '../../components/context/CartContext'
 import { FaTrashAlt } from "react-icons/fa";
 import { Link } from 'react-router-dom'
@@ -8,6 +8,17 @@ import PageTransition from '../../components/PageTransition';
 
 function Cart() {
     const { cartItems, increaseQuantity, decreaseQuantity, removeFromCart } = useContext(CartContext)
+    const [removingId, setRemovingId] = useState(null)
+
+    const handleRemove = (id) => {
+        setRemovingId(id)
+
+        setTimeout(() => {
+            removeFromCart(id)
+            setRemovingId(null)
+        }, 700)
+    }
+
     const total = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0)
 
     return (
@@ -30,11 +41,13 @@ function Cart() {
 
                             <div className="cart_items">
                                 {cartItems.map((item) => (
-                                    <div className="cart_item" key={item.id}>
-
+                                    <div
+                                        className={`cart_item ${removingId === item.id ? 'is_removing' : ''}`}
+                                        key={item.id}
+                                    >
                                         <div className="cart_item_image">
-                                            <img src={item.images[0]} alt={item.title} width="100"  height="100"
-                                             loading="lazy" decoding="async"/>
+                                            <img src={item.images[0]} alt={item.title} width="100" height="100"
+                                                loading="lazy" decoding="async" />
                                         </div>
 
                                         <div className="cart_item_content">
@@ -54,7 +67,8 @@ function Cart() {
                                             </div>
                                         </div>
 
-                                        <button onClick={() => removeFromCart(item.id)} className="delete_item" aria-label="Remove item">
+                                        <button onClick={() => handleRemove(item.id)} className="delete_item"
+                                            aria-label="Remove item" disabled={removingId === item.id}>
                                             <FaTrashAlt />
                                         </button>
                                     </div>

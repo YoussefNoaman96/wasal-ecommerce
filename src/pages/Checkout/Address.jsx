@@ -1,6 +1,10 @@
 import React from 'react'
 
-function Address() {
+function Address({
+    formData,
+    onChange,
+    errors
+}) {
 
     return (
         <div className="checkout_card">
@@ -14,44 +18,108 @@ function Address() {
             </div>
 
             <div className="checkout_inputs">
-                <div className="input_group">
-                    <label>First Name</label>
-                    <input type="text" placeholder="First name" />
+
+                {/* first name*/}
+                <div className={`input_group ${errors.firstName ? 'has_error' : ''}`}>
+
+                    <label>First Name<span className="required">*</span></label>
+                    <input type="text" name="firstName" value={formData.firstName}
+                        onChange={onChange} placeholder="First name" autoComplete="given-name" />
+
+                    {errors.firstName && (
+                        <small className="field_error">
+                            {errors.firstName}
+                        </small>
+                    )}
                 </div>
 
-                <div className="input_group">
-                    <label>Last Name</label>
-                    <input type="text" placeholder="Last name" />
+                {/* last name */}
+                <div className={`input_group ${errors.lastName ? 'has_error' : ''}`}>
+                    <label>Last Name<span className="required">*</span></label>
+                    <input type="text" name="lastName" value={formData.lastName}
+                        onChange={onChange} placeholder="Last name" autoComplete="family-name" />
+
+                    {errors.lastName && (
+                        <small className="field_error">
+                            {errors.lastName}
+                        </small>
+                    )}
                 </div>
 
-                <div className="input_group">
-                    <label>Country</label>
-                    <select>
+                {/* country */}
+                <div className={`input_group ${errors.country ? 'has_error' : ''}`}>
+
+                    <label>Country<span className="required">*</span></label>
+                    <select name="country" value={formData.country}
+                        onChange={onChange} autoComplete="country">
+
                         <option value="">Select country</option>
                         <option value="egypt">Egypt</option>
                         <option value="saudi">Saudi Arabia</option>
                         <option value="uae">United Arab Emirates</option>
                     </select>
+
+                    {errors.country && (
+                        <small className="field_error">
+                            {errors.country}
+                        </small>
+                    )}
                 </div>
+
+                {/* city */}
+                <div className={`input_group ${errors.city ? 'has_error' : ''}`}>
+                    <label>City<span className="required">*</span></label>
+                    <input type="text" name="city" value={formData.city}
+                        onChange={onChange} placeholder="City" autoComplete="address-level2" />
+
+                    {errors.city && (
+                        <small className="field_error">
+                            {errors.city}
+                        </small>
+                    )}
+                </div>
+
+                {/* address */}
+
+                <div className={`input_group full ${errors.address ? 'has_error' : ''}`}>
+                    <label>Address<span className="required">*</span></label>
+
+                    <input type="text" name="address" value={formData.address}
+                        onChange={onChange} placeholder="Street address" autoComplete="street-address"/>
+
+                    {errors.address && (
+                        <small className="field_error">
+                            {errors.address}
+                        </small>
+                    )}
+                </div>
+
+
+                {/* apartment */}
 
                 <div className="input_group">
-                    <label>City</label>
-                    <input type="text" placeholder="City" />
+                    <label>
+                        Apartment / Suite<span className="optional">Optional</span>
+                    </label>
+
+                    <input type="text" name="apartment" value={formData.apartment}
+                        onChange={onChange} placeholder="Apartment / Suite" autoComplete="address-line2"/>
                 </div>
 
-                <div className="input_group full">
-                    <label>Address</label>
-                    <input type="text" placeholder="Street address" />
-                </div>
+                {/*  postal code */}
 
-                <div className="input_group">
-                    <label>Apartment / Suite</label>
-                    <input type="text" placeholder="Optional" />
-                </div>
+                <div className={`input_group ${errors.postalCode ? 'has_error' : ''}`}>
+                    <label>Postal Code<span className="required">*</span></label>
 
-                <div className="input_group">
-                    <label>Postal Code</label>
-                    <input type="text" placeholder="Postal code" />
+                    <input type="text" name="postalCode" value={formData.postalCode}
+                        onChange={onChange} placeholder="Postal code" inputMode="numeric" autoComplete="postal-code"/>
+
+                    {errors.postalCode && (
+                        <small className="field_error">
+                            {errors.postalCode}
+                        </small>
+                    )}
+
                 </div>
             </div>
         </div>

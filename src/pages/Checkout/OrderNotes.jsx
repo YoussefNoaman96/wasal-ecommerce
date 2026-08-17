@@ -1,6 +1,9 @@
 import React from 'react'
 
-function OrderNotes() {
+function OrderNotes({
+    notes,
+    onChange
+}) {
 
     return (
         <div className="checkout_card">
@@ -14,7 +17,9 @@ function OrderNotes() {
             </div>
 
             <div className="input_group full">
-                <textarea placeholder="Add a note to your order (optional)" rows="5"></textarea>
+                <textarea  name="notes" value={notes} onChange={onChange}
+                    placeholder="Add a note to your order (optional)" rows="5"
+                />
             </div>
         </div>
     )

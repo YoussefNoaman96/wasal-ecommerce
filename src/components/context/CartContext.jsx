@@ -94,6 +94,13 @@ function CartProvider({ children }) {
         )
     }, [user])
 
+    const clearCart = useCallback(() => {
+        if (!user || !cartKey) return
+
+        setCartItems([])
+        localStorage.removeItem(cartKey)
+    }, [user, cartKey])
+
     const addToCart = useCallback((item) => {
         if (!user) return false
 
@@ -129,6 +136,7 @@ function CartProvider({ children }) {
         increaseQuantity,
         decreaseQuantity,
         removeFromCart,
+        clearCart,
         addToFavorites,
         favorites,
         removeFromFavorites
@@ -138,6 +146,7 @@ function CartProvider({ children }) {
         increaseQuantity,
         decreaseQuantity,
         removeFromCart,
+        clearCart,
         addToFavorites,
         favorites,
         removeFromFavorites
