@@ -32,6 +32,12 @@ function Checkout() {
 
     const [deliveryMethod, setDeliveryMethod] = useState('standard')
     const [paymentMethod, setPaymentMethod] = useState('cash')
+    const [cardData, setCardData] = useState({
+        cardNumber: '',
+        cardHolder: '',
+        expiryDate: '',
+        cvv: '',
+    })
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
@@ -50,10 +56,18 @@ function Checkout() {
         }
     }
 
+    const handleCardChange = (field, value) => {
+        setCardData((prev) => ({
+            ...prev,
+            [field]: value,
+        }))
+    }
+
     const validateOrder = () => {
         const newErrors = validateCheckout(
             formData,
-            paymentMethod
+            paymentMethod,
+            cardData
         )
 
         setErrors(newErrors)
@@ -99,7 +113,8 @@ function Checkout() {
                             <ContactInformation formData={formData} onChange={handleInputChange} errors={errors} />
                             <Address formData={formData} onChange={handleInputChange} errors={errors} />
                             <DeliveryMethod deliveryMethod={deliveryMethod} setDeliveryMethod={setDeliveryMethod} />
-                            <PaymentMethod paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod} />
+                            <PaymentMethod paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod} 
+                                cardData={cardData} onCardChange={handleCardChange} errors={errors}/>
                             <OrderNotes notes={formData.notes} onChange={handleInputChange} />
                         </div>
 

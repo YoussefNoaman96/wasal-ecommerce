@@ -1,4 +1,4 @@
-export const validateCheckout = (formData, paymentMethod) => {
+export const validateCheckout = (formData, paymentMethod, cardData) => {
     const errors = {}
 
     // Email
@@ -101,7 +101,65 @@ export const validateCheckout = (formData, paymentMethod) => {
 
     // Payment
     if (paymentMethod === 'card') {
-        // Card validation will be added here
+        const cardNumber = cardData?.cardNumber
+            ?.replace(/\D/g, '') || ''
+
+        const cardHolder = cardData?.cardHolder?.trim() || ''
+
+        const expiryDate = cardData?.expiryDate?.trim() || ''
+
+        const cvv = cardData?.cvv?.replace(/\D/g, '') || ''
+
+        // Card Number
+        if (!cardNumber) {
+            errors.cardNumber = 'Card number is required.'
+        } else if (cardNumber.length !== 16) {
+            errors.cardNumber =
+                'Card number must contain 16 digits.'
+        }
+
+        // Card Holder
+        if (!cardHolder) {
+            errors.cardHolder =
+                'Card holder name is required.'
+        } else if (cardHolder.length < 2) {
+            errors.cardHolder =
+                'Card holder name must be at least 2 characters.'
+        } else if (!nameRegex.test(cardHolder)) {
+            errors.cardHolder =
+                'Card holder name can only contain letters.'
+        }
+
+        // Expiry Date
+        if (!expiryDate) {
+            errors.expiryDate =
+                'Expiry date is required.'
+        } else {
+            const expiryDigits =
+                expiryDate.replace(/\D/g, '')
+
+            if (expiryDigits.length !== 4) {
+                errors.expiryDate =
+                    'Please enter a valid expiry date.'
+            } else {
+                const month = Number(
+                    expiryDigits.slice(0, 2)
+                )
+
+                if (month < 1 || month > 12) {
+                    errors.expiryDate =
+                        'Please enter a valid expiry month.'
+                }
+            }
+        }
+
+        // CVV
+        if (!cvv) {
+            errors.cvv = 'CVV is required.'
+        } else if (cvv.length < 3 || cvv.length > 4) {
+            errors.cvv =
+                'CVV must contain 3 or 4 digits.'
+        }
     }
 
     return errors

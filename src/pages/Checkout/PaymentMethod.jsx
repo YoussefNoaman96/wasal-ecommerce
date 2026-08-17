@@ -4,9 +4,14 @@ import { FaCreditCard, FaCheck } from 'react-icons/fa'
 function PaymentMethod({
     paymentMethod,
     setPaymentMethod,
-    cardData,
+    cardData = {
+        cardNumber: '',
+        cardHolder: '',
+        expiryDate: '',
+        cvv: '',
+    },
     onCardChange,
-    errors
+    errors = {},
 }) {
 
     const handleCardNumber = (e) => {
@@ -77,12 +82,12 @@ function PaymentMethod({
                             <div className="premium_card_content">
                                 <span>Card Number</span>
 
-                                <input type="text" inputMode="numeric" value={cardData.cardNumber}
+                                <input type="text" name="cardNumber" inputMode="numeric" value={cardData.cardNumber}
                                     onChange={handleCardNumber} placeholder="0000 0000 0000 0000"
                                 />
                             </div>
 
-                            {cardData.cardNumber.replace(/\s/g, '').length === 16 && (
+                            {(cardData.cardNumber || '').replace(/\s/g, '').length === 16 && (
                                 <button type="button" className="premium_card_check">
                                     <FaCheck />
                                 </button>
@@ -92,7 +97,7 @@ function PaymentMethod({
                         <div className={`input_group ${errors.cardHolder ? 'input_error' : ''} full`}>
 
                             <label>Card Holder Name</label>
-                            <input type="text" value={cardData.cardHolder}
+                            <input type="text" name="cardHolder" value={cardData.cardHolder}
                                 onChange={(e) => onCardChange('cardHolder', e.target.value)}
                                 placeholder="Name on card"
                             />
@@ -103,7 +108,7 @@ function PaymentMethod({
 
                                 <label>Expiry Date</label>
 
-                                <input type="text" inputMode="numeric" value={cardData.expiryDate}
+                                <input type="text" name="expiryDate" inputMode="numeric" value={cardData.expiryDate}
                                     onChange={handleExpiryDate} placeholder="MM / YY"
                                 />
                             </div>
@@ -111,7 +116,7 @@ function PaymentMethod({
                             <div className={`input_group ${errors.cvv ? 'input_error' : ''}`}>
 
                                 <label>CVV</label>
-                                <input type="password" inputMode="numeric" value={cardData.cvv}
+                                <input type="password" name="cvv" inputMode="numeric" value={cardData.cvv}
                                     onChange={handleCVV} maxLength="4" placeholder="123"
                                 />
                             </div>
