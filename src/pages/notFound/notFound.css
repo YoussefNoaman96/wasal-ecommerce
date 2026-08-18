@@ -139,8 +139,6 @@
 @media (max-width: 480px) {
 
     .page_404 {
-        min-height: calc(100vh - 100px);
-
         padding: 10px 12px;
     }
 
@@ -150,7 +148,6 @@
 
     .error_number {
         margin-top: 5px;
-
         font-size: 48px;
     }
 
@@ -169,14 +166,12 @@
 
     .content_box_404 p {
         max-width: 330px;
-
         font-size: 14px;
         line-height: 1.7;
     }
 
     .link_404 {
         padding: 11px 24px;
-
         font-size: 14px;
     }
 }
