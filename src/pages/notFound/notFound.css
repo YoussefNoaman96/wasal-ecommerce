@@ -1,0 +1,183 @@
+/*   404 page */
+.page_404 {
+    min-height: calc(100vh - 150px);
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px 20px 40px;
+    background: var(--bg_color);
+}
+
+.container_404 {
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+}
+
+/* 404  illustration */
+
+.four_zero_four_bg {
+    position: relative;
+    width: 100%;
+    height: 430px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+/* 404  */
+.error_number {
+    position: relative;
+    z-index: 5;
+    margin-top: -5px;
+    font-size: 72px;
+    line-height: 1;
+    font-weight: 800;
+    color: var(--main_color);
+    letter-spacing: 4px;
+}
+
+/*   caveman*/
+
+.caveman_scene {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 650px;
+    height: 370px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.caveman_scene img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/*  text */
+
+.content_box_404 {
+    position: relative;
+    z-index: 10;
+    margin-top: 5px;
+}
+
+.content_box_404 h2 {
+    margin: 5px 0 12px;
+    color: var(--color_heading);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.content_box_404 p {
+    margin: 0 auto 25px;
+    max-width: 500px;
+    color: var(--p_color);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/*   home button */
+
+.link_404 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    background: var(--main_color);
+    color: var(--white_color);
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.link_404:hover {
+    background: var(--color_heading);
+    transform: translateY(-2px);
+}
+
+/*   tablet   */
+
+@media (max-width: 768px) {
+
+    .page_404 {
+        padding: 10px 15px;
+    }
+
+    .four_zero_four_bg {
+        height: 340px;
+    }
+
+    .error_number {
+        font-size: 58px;
+    }
+
+    .caveman_scene {
+        width: 520px;
+        height: 300px;
+    }
+
+    .content_box_404 h2 {
+        font-size: 25px;
+    }
+
+    .content_box_404 p {
+        font-size: 15px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .page_404 {
+        min-height: calc(100vh - 100px);
+
+        padding: 10px 12px;
+    }
+
+    .four_zero_four_bg {
+        height: 280px;
+    }
+
+    .error_number {
+        margin-top: 5px;
+
+        font-size: 48px;
+    }
+
+    .caveman_scene {
+        width: 390px;
+        height: 240px;
+    }
+
+    .content_box_404 {
+        margin-top: 0;
+    }
+
+    .content_box_404 h2 {
+        font-size: 22px;
+    }
+
+    .content_box_404 p {
+        max-width: 330px;
+
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .link_404 {
+        padding: 11px 24px;
+
+        font-size: 14px;
+    }
+}

@@ -22,6 +22,7 @@ const About = lazy(() => import("./pages/About/About"))
 const Categories = lazy(() => import("./pages/Categories/Categories"))
 const Checkout = lazy(() => import("./pages/Checkout/Checkout"))
 const OrderConfirmation = lazy(() => import("./pages/orderConfirmation/OrderConfirmation"))
+const NotFound = lazy(() => import("./pages/notFound/NotFound"));
 
 function App() {
   const location = useLocation()
@@ -32,7 +33,7 @@ function App() {
     <>
       {!isAuthPage && (
         <header>
-          <TopHeader   setIsSidebarOpen={setIsSidebarOpen}/>
+          <TopHeader setIsSidebarOpen={setIsSidebarOpen} />
           <BtmHeader isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
         </header>
       )}
@@ -74,11 +75,14 @@ function App() {
                 <ProtectedRoute>
                   <Favorites />
                 </ProtectedRoute>} />
-                
-               <Route path="order-confirmation" element={<OrderConfirmation />}/> 
+
+              <Route path="order-confirmation" element={<OrderConfirmation />} />
               <Route path="/search" element={<SearchResults />} />
               <Route path="/products/:id" element={<ProductDetails />} />
               <Route path="/category/:category" element={<CategoryPage />} />
+
+              {/* 404 */}
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
         </AnimatePresence>
