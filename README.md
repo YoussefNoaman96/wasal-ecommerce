@@ -26,8 +26,8 @@ The project provides a simple and responsive shopping experience where users can
 * React
 * Vite
 * React Router
-* Axios
 * Swiper
+* Framer Motion
 * React Icons
 * CSS
 * DummyJSON API
@@ -38,13 +38,13 @@ The project provides a simple and responsive shopping experience where users can
 Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/YoussefNoaman96/wasal-ecommerce.git
 ```
 
 Move into the project directory:
 
 ```bash
-cd E-commerce
+cd wasal-ecommerce
 ```
 
 Install dependencies:
