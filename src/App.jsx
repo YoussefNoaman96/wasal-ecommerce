@@ -1,5 +1,6 @@
 import { Route, Routes, useLocation } from "react-router-dom"
 import { lazy, Suspense, useState } from "react"
+import { Analytics } from "@vercel/analytics/react"
 
 import BtmHeader from "./components/header/BtmHeader"
 import TopHeader from "./components/header/TopHeader"
@@ -91,6 +92,7 @@ function App() {
           <Footer />
         )}
       </main>
+      <Analytics />
     </>
   )
 }
